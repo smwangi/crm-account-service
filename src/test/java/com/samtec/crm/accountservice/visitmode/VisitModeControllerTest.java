@@ -101,7 +101,7 @@ public class VisitModeControllerTest extends ApplicationTests {
                 .andExpect(status().isOk())
         .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
         //.andExpect(jsonPath("$",hasSize(0)))
-        
+
         ;
     }
 
