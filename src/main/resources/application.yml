@@ -1,0 +1,55 @@
+#debug: true
+server:
+  port: 8086
+spring:
+  application:
+    name: crm-account
+
+  jackson:
+    property-naming-strategy: UPPER_CAMEL_CASE
+    serialization:
+      indent-output: true
+
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/crm_account?autoreconnect=true
+    username: root
+    password: 12345678
+    testOnBorrow: true
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: SELECT 1
+    max-active: 15
+    max-idle: 10
+    max-wait: 8000
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+#management:
+#  metrics:
+#    export:
+#      influx:
+#        db: crm_sirius_account
+#        uri: http://192.168.99.100:8086
+#  endpoint:
+#    prometheus:
+#      enabled: true
+
+#scrape_configs:
+#  - job_name: 'springboot'
+#    metrics_path: '/actuator/prometheus'
+#      static_configs:
+#        - targets: ['person-service:2222']
+
+flyway:
+  url: jdbc:mysql://localhost:3306/mysql
+  user: root
+  password: 12345678
+  schemas: crm_account
+
+
