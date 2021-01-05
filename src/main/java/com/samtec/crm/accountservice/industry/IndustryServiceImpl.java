@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class IndustryServiceImpl implements IndustryService {
@@ -23,17 +24,18 @@ public class IndustryServiceImpl implements IndustryService {
 
     @Override
     public Optional<IndustryDto> findById(long id) {
-        return Optional.of(mapper.toIndustryDto(industryRepository.findById(id).get()));
+        return industryRepository.findById(id)
+                .stream()
+                .map(mapper::toIndustryDto)
+                .findFirst();
     }
 
     @Override
     public List<IndustryDto> fetchAll() {
-        return mapper.toIndustryDtoList(industryRepository.findAll());
-    }
-
-    //@Override
-    public IndustryDto update(IndustryDto industryDto) {
-        return mapper.toIndustryDto(industryRepository.save(mapper.toIndustry(industryDto)));
+        return industryRepository.findAll()
+                .stream()
+                .map(mapper::toIndustryDto)
+                .collect(Collectors.toList());
     }
 
     @Override

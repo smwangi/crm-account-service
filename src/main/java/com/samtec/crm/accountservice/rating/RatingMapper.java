@@ -10,5 +10,4 @@ import java.util.Optional;
 public interface RatingMapper {
     RatingDto toRatingDto(Rating rating);
     Rating toRating(RatingDto ratingDto);
-    List<RatingDto> toRatingDtoList(List<Rating>ratingList);
 }

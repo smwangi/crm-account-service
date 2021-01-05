@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class AccountTypeServiceImpl implements AccountTypeService {
@@ -24,13 +25,18 @@ public class AccountTypeServiceImpl implements AccountTypeService {
     @Override
     public Optional<AccountTypeDto> findById(long id) {
         Optional<AccountType> accountType = accountTypeRepository.findById(id);
-        return Optional.of(mapper.toAccountTypeDto(accountType.get()));
+        return accountTypeRepository.findById(id)
+                .stream()
+                .map(mapper::toAccountTypeDto)
+                .findFirst();
     }
 
     @Override
     public List<AccountTypeDto> fetchAll() {
-        List<AccountType> accountTypeList = accountTypeRepository.findAll();
-        return mapper.toAccountTypeDtoList(accountTypeList);
+        return accountTypeRepository.findAll()
+                .stream()
+                .map(mapper::toAccountTypeDto)
+                .collect(Collectors.toList());
     }
 
     //@Override

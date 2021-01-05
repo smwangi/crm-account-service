@@ -10,6 +10,5 @@ import java.util.Optional;
 public interface AccountMapper {
     AccountDto toAccountDto(Account account);
     Account toAccount(AccountDto accountDto);
-    List<AccountDto> accountDtoList(List<Account> accountList);
 }
 

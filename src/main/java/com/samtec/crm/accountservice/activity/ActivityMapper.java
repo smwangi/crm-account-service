@@ -9,5 +9,4 @@ import java.util.List;
 public interface ActivityMapper {
     ActivityDto toActivityDto(Activity activity);
     Activity toActivity(ActivityDto activityDto);
-    List<ActivityDto> activityDtoList(List<Activity> activityList);
 }

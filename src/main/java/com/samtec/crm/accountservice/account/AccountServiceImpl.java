@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class AccountServiceImpl implements AccountService{
@@ -22,12 +23,18 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     public Optional<AccountDto> findById(long id) {
-        return Optional.of(mapper.toAccountDto(accountRepository.findById(id).get()));
+        return accountRepository.findById(id)
+                .stream()
+                .map(mapper::toAccountDto)
+        .findFirst();
     }
 
     @Override
     public List<AccountDto> fetchAll() {
-        return mapper.accountDtoList(accountRepository.findAll());
+        return accountRepository.findAll()
+                .stream()
+                .map(mapper::toAccountDto)
+                .collect(Collectors.toList());
     }
 
     //@Override

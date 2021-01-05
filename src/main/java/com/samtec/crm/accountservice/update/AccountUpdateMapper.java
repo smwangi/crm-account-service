@@ -11,5 +11,4 @@ public interface AccountUpdateMapper {
 
     AccountUpdateDto toAccountUpdateDto(AccountUpdate accountUpdate);
     AccountUpdate toAccountUpdate(AccountUpdateDto accountUpdateDto);
-    List<AccountUpdateDto> toAccountUpdateDtoList(List<AccountUpdate> accountUpdateList);
 }

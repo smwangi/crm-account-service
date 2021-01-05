@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 @Transactional
@@ -30,14 +31,22 @@ public class VisitModeServiceImpl implements VisitModeService {
     @Override
     public Optional<VisitModeDto> findById(long id) {
         logger.info("Visit Mode Id: "+id);
-        final Optional<VisitMode> visitMode = visitModeRepository.findById(id);
+//        final Optional<VisitMode> visitMode = visitModeRepository.findById(id);
 
-        return Optional.of(mapper.toVisitModeDto(mapper.unwrap(visitMode)));// Optional.of(mapper.toVisitModeDto(visitMode));
+        //return Optional.of(mapper.toVisitModeDto(mapper.unwrap(visitMode)));// Optional.of(mapper.toVisitModeDto(visitMode));
+        return visitModeRepository.findById(id)
+                .stream()
+                .map(mapper::toVisitModeDto)
+                .findFirst();
     }
 
     @Override
     public List<VisitModeDto> fetchAll() {
-        return mapper.toVisitModeDtoList(visitModeRepository.findAll());
+
+        return visitModeRepository.findAll()
+                .stream()
+                .map(mapper::toVisitModeDto)
+                .collect(Collectors.toList());
     }
 
 

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class AddressServiceImpl  implements AddressService{
@@ -22,17 +23,18 @@ public class AddressServiceImpl  implements AddressService{
 
     @Override
     public Optional<AddressDto> findById(long id) {
-        return Optional.of(mapper.toAddressDto(addressRepository.findById(id).get()));
+        return addressRepository.findById(id)
+                .stream()
+                .map(mapper::toAddressDto)
+                .findFirst();
     }
 
     @Override
     public List<AddressDto> fetchAll() {
-        return mapper.addressDtoList(addressRepository.findAll());
-    }
-
-    //@Override
-    public AddressDto update(AddressDto addressDto) {
-        return mapper.toAddressDto(addressRepository.save(mapper.toAddress(addressDto)));
+        return addressRepository.findAll()
+                .stream()
+                .map(mapper::toAddressDto)
+                .collect(Collectors.toList());
     }
 
     @Override

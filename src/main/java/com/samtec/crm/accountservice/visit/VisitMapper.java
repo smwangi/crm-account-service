@@ -11,5 +11,4 @@ import java.util.Optional;
 public interface VisitMapper {
     VisitDto toVisitDto(Visit visit);
     Visit toVisit(VisitDto visitDto);
-    List<VisitDto> visitDtoList(List<Visit>visitList);
 }

@@ -11,5 +11,4 @@ public interface IndustryMapper {
 
     IndustryDto toIndustryDto(Industry industry);
     Industry toIndustry(IndustryDto industryDto);
-    List<IndustryDto> toIndustryDtoList(List<Industry> industryList);
 }

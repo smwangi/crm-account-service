@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class VisitServiceImpl implements VisitService {
@@ -24,18 +25,19 @@ public class VisitServiceImpl implements VisitService {
     @Override
     public Optional<VisitDto> findById(long id) {
 
-        return Optional.of(mapper.toVisitDto(visitRepository.getOne(id)));
+        return visitRepository.findById(id)
+                .stream()
+                .map(mapper::toVisitDto)
+                .findFirst();
     }
 
     @Override
     public List<VisitDto> fetchAll() {
-        return mapper.visitDtoList(visitRepository.findAll());
-    }
 
-    //@Override
-    public VisitDto update(VisitDto visitDto) {
-
-        return mapper.toVisitDto(visitRepository.save(mapper.toVisit(visitDto)));
+        return visitRepository.findAll()
+                .stream()
+                .map(mapper::toVisitDto)
+                .collect(Collectors.toList());
     }
 
     @Override

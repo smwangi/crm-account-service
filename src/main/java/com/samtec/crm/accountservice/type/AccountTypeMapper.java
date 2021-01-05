@@ -10,6 +10,4 @@ import java.util.Optional;
 public interface AccountTypeMapper {
     AccountTypeDto toAccountTypeDto(AccountType accountType);
     AccountType toAccountType(AccountTypeDto accountTypeDto);
-    List<AccountTypeDto> toAccountTypeDtoList(List<AccountType>accountTypeList);
-    List<AccountType> toAccountTypeList(List<AccountTypeDto>accountTypeDtoList);
 }

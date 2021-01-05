@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class ActivityServiceImpl implements ActivityService {
@@ -22,17 +23,19 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public Optional<ActivityDto> findById(long id) {
-        return Optional.of(mapper.toActivityDto(activityRepository.findById(id).get()));
+        return activityRepository.findById(id)
+                .stream()
+                .map(mapper::toActivityDto)
+                .findFirst();
     }
 
     @Override
     public List<ActivityDto> fetchAll() {
-        return mapper.activityDtoList(activityRepository.findAll());
-    }
 
-    //@Override
-    public ActivityDto update(ActivityDto activityDto) {
-        return mapper.toActivityDto(activityRepository.save(mapper.toActivity(activityDto)));
+        return activityRepository.findAll()
+                .stream()
+                .map(mapper::toActivityDto)
+                .collect(Collectors.toList());
     }
 
     @Override

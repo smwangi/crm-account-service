@@ -10,5 +10,4 @@ import java.util.Optional;
 public interface AddressMapper {
     AddressDto toAddressDto(Address address);
     Address toAddress(AddressDto addressDto);
-    List<AddressDto> addressDtoList(List<Address> addressList);
 }

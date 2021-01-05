@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class RatingServiceImpl implements RatingService {
@@ -21,17 +22,19 @@ public class RatingServiceImpl implements RatingService {
 
     @Override
     public Optional<RatingDto> findById(long id) {
-        return Optional.of(mapper.toRatingDto(ratingRepository.findById(id).get()));
+        return ratingRepository.findById(id)
+                .stream()
+                .map(mapper::toRatingDto)
+                .findFirst();
     }
 
     @Override
     public List<RatingDto> fetchAll() {
-        return mapper.toRatingDtoList(ratingRepository.findAll());
-    }
 
-    //@Override
-    public RatingDto update(RatingDto ratingDto) {
-        return mapper.toRatingDto(ratingRepository.save(mapper.toRating(ratingDto)));
+        return ratingRepository.findAll()
+                .stream()
+                .map(mapper::toRatingDto)
+                .collect(Collectors.toList());
     }
 
     @Override

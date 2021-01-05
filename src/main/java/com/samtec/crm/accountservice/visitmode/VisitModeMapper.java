@@ -15,7 +15,6 @@ import java.util.Optional;
 public interface VisitModeMapper {
     VisitModeDto toVisitModeDto(VisitMode visitMode);
     VisitMode toVisitMode(VisitModeDto visitModeDto);
-    List<VisitModeDto> toVisitModeDtoList(List<VisitMode> visitModeList);
     VisitDto map(Visit visit);
     Visit map(VisitDto visitDto);
 
