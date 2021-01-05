@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.rating;
 
 import com.samtec.crm.accountservice.account.Account;

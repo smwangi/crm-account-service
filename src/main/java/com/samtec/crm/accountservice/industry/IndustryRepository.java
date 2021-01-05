@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.industry;
 
 import org.springframework.data.jpa.repository.JpaRepository;

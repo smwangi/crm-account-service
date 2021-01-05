@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.rating;
 
 import org.springframework.beans.factory.annotation.Autowired;

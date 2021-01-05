@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.visitmode;
 
 import com.samtec.crm.accountservice.common.BaseEntity;

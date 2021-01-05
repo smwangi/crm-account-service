@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.visitmode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

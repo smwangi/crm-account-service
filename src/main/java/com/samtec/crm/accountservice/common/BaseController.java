@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.common;
 
 import org.springframework.http.ResponseEntity;
@@ -18,3 +19,4 @@ public interface BaseController<T> {
     Map<String,String>update(@PathVariable long id,@Valid @RequestBody T body);
     Map<String,String> delete(@PathVariable long id);
 }
+

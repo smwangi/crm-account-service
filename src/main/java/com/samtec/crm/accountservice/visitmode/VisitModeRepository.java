@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.visitmode;
 
 import org.springframework.data.jpa.repository.JpaRepository;

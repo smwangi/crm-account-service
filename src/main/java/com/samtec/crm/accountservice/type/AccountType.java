@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.type;
 
 import com.samtec.crm.accountservice.account.Account;

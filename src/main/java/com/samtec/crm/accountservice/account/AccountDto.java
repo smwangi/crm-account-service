@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;

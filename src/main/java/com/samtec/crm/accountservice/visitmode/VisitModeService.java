@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.visitmode;
 
 import com.samtec.crm.accountservice.common.BaseService;
@@ -10,9 +11,4 @@ import java.util.Optional;
 @Service
 public interface  VisitModeService extends BaseService<VisitModeDto> {
 
-   /* VisitModeDto create(VisitModeDto visitModeDto);
-    Optional<VisitModeDto> getOne(long id);
-    List<VisitModeDto> getAll();
-    boolean update(VisitModeDto visitModeDto);
-    void delete(VisitModeDto visitModeDto);*/
 }

@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.account;
 
 import org.mapstruct.Mapper;
@@ -11,3 +12,4 @@ public interface AccountMapper {
     Account toAccount(AccountDto accountDto);
     List<AccountDto> accountDtoList(List<Account> accountList);
 }
+

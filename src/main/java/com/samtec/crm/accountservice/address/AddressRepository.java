@@ -1,3 +1,4 @@
+
 package com.samtec.crm.accountservice.address;
 
 import org.springframework.data.jpa.repository.JpaRepository;
